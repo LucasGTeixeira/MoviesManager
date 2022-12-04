@@ -7,6 +7,9 @@
     <string name="duration">Duration</string>
     <string name="flag">flag</string>
     <string name="save">Save</string>
+    <string name="add_movie">Add Movie</string>
+    <string name="remove_movie">Remove Movie</string>
+    <string name="edit_movie">Edit Movie</string>
     <string-array name="genra">
         <item>Horror</item>
         <item>Comedy</item>

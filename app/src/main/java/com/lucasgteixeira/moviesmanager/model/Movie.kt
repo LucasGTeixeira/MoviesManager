@@ -11,6 +11,6 @@ data class Movie(
     var studio: String,
     var duration: String,
     var flag: String,
-    var note: String,
+    var rating: String,
     var genra: String,
 ): Parcelable

@@ -2,4 +2,15 @@
     <string name="app_name">MoviesManager</string>
     <string name="name">name</string>
     <string name="rating">rating</string>
+    <string name="studio">Studio</string>
+    <string name="release_year">Release Year</string>
+    <string name="duration">Duration</string>
+    <string name="flag">flag</string>
+    <string name="save">Save</string>
+    <string-array name="genra">
+        <item>Horror</item>
+        <item>Comedy</item>
+        <item>Action</item>
+        <item>Drama</item>
+    </string-array>
 </resources>

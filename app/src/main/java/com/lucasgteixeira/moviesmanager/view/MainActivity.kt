@@ -3,11 +3,12 @@ package com.lucasgteixeira.moviesmanager.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
+
 import com.lucasgteixeira.moviesmanager.adapter.MovieAdapter
 import com.lucasgteixeira.moviesmanager.databinding.ActivityMainBinding
-import com.lucasgteixeira.moviesmanager.model.Constant.EXTRA_MOVIE
+
 import com.lucasgteixeira.moviesmanager.model.Movie
 
 class MainActivity : AppCompatActivity() {
@@ -21,8 +22,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var marl: ActivityResultLauncher<Intent>
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(amb.root)
@@ -33,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         amb.movieLv.adapter = movieAdapter
 
         movieAdapter.notifyDataSetChanged()
+
+
     }
 
     private fun fillMovieList() {

@@ -10,6 +10,8 @@
     <string name="add_movie">Add Movie</string>
     <string name="remove_movie">Remove Movie</string>
     <string name="edit_movie">Edit Movie</string>
+    <string name="orderByName">order by name</string>
+    <string name="orderByRate">order by rate</string>
     <string-array name="genra">
         <item>Horror</item>
         <item>Comedy</item>

@@ -86,6 +86,15 @@ class MainActivity : AppCompatActivity() {
                 marl.launch(movieIntent)
                 true
             }
+            R.id.orderByName -> {
+                orderListByName()
+                true
+            }
+            R.id.orderByRate -> {
+                orderListByRate()
+                true
+            }
+
             else -> { false }
         }
     }
@@ -118,6 +127,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun orderListByName(){
+        movieList.sortBy { it.name }
+        movieAdapter.notifyDataSetChanged()
+    }
+
+    private fun orderListByRate(){
+        movieList.sortBy { it.rating.toDouble() }
+        movieList.reverse()
+        movieAdapter.notifyDataSetChanged()
+    }
+
     private fun fillMovieList() {
         for (i in 1..5) {
             movieList.add(
@@ -128,7 +148,7 @@ class MainActivity : AppCompatActivity() {
                     studio = "studio",
                     duration = "60",
                     flag = "checked",
-                    rating = "5",
+                    rating = "5$i",
                     genra = "terror",
                 )
             )

@@ -14,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.lucasgteixeira.moviesmanager.R
 
 import com.lucasgteixeira.moviesmanager.adapter.MovieAdapter
+import com.lucasgteixeira.moviesmanager.controller.MovieController
 import com.lucasgteixeira.moviesmanager.databinding.ActivityMainBinding
 import com.lucasgteixeira.moviesmanager.model.Constant.EXTRA_LIST_MOVIE_NAMES
 import com.lucasgteixeira.moviesmanager.model.Constant.EXTRA_MOVIE
@@ -26,17 +27,22 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-    private val movieList: MutableList<Movie> = mutableListOf()
+    private val movieList: MutableList<Movie> by lazy{
+        movieController.getMovies()
+    }
 
     private lateinit var movieAdapter: MovieAdapter
 
+    private val movieController : MovieController by lazy {
+        MovieController(this)
+    }
+
     private lateinit var marl: ActivityResultLauncher<Intent>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(amb.root)
-
-        fillMovieList()
 
         movieAdapter = MovieAdapter(this, movieList)
         amb.movieLv.adapter = movieAdapter
@@ -52,10 +58,13 @@ class MainActivity : AppCompatActivity() {
                     val position = movieList.indexOfFirst { it.id == _movie.id }
                     if (position != -1) {
                         movieList[position] = _movie
+                        movieController.editMovie(_movie)
                     }
                     else {
+                        _movie.id = movieController.insertMovie(_movie)
                         movieList.add(movie)
                     }
+                    movieList.sortBy { it.name }
                     movieAdapter.notifyDataSetChanged()
                 }
             }
@@ -111,6 +120,7 @@ class MainActivity : AppCompatActivity() {
         val position = (item.menuInfo as AdapterView.AdapterContextMenuInfo).position
         return when(item.itemId) {
             R.id.removeMovieMi -> {
+                movieController.removeMovie(movieList[position].id)
                 movieList.removeAt(position)
                 movieAdapter.notifyDataSetChanged()
                 true
@@ -136,22 +146,5 @@ class MainActivity : AppCompatActivity() {
         movieList.sortBy { it.rating.toDouble() }
         movieList.reverse()
         movieAdapter.notifyDataSetChanged()
-    }
-
-    private fun fillMovieList() {
-        for (i in 1..5) {
-            movieList.add(
-                Movie(
-                    id = i,
-                    name = "filme $i",
-                    releaseYear = "20$i",
-                    studio = "studio",
-                    duration = "60",
-                    flag = "checked",
-                    rating = "5$i",
-                    genra = "terror",
-                )
-            )
-        }
     }
 }

@@ -2,11 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/addMovieMi"
-        android:icon="@drawable/ic_add"
-        android:title="@string/add_movie"
-        app:showAsAction="ifRoom" />
-    <item
         android:id="@+id/orderByName"
         android:icon="@drawable/ic_order_by_name"
         android:title="@string/orderByName"
@@ -15,5 +10,10 @@
         android:id="@+id/orderByRate"
         android:icon="@drawable/ic_order_by_rate"
         android:title="@string/orderByRate"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/addMovieMi"
+        android:icon="@drawable/ic_add"
+        android:title="@string/add_movie"
         app:showAsAction="ifRoom" />
 </menu>
